@@ -1,0 +1,50 @@
+erDiagram
+    Product ||--|{ ProductsInOrder : "has many"
+    Order ||--|{ ProductsInOrder : "has many"
+    Person |o--|| Seller : "is a"
+    Person |o--|| Customer : "is a"
+    Seller ||--|{ Product : creates
+    Customer ||--|{ Order : makes
+
+
+    Customer {
+
+    }
+
+    Seller {
+        
+    }
+
+    Product {
+        int productId PK
+        string productName
+        int price
+        int inventoryNumber
+        string category
+        bool available
+        int sellerId FK
+    }
+
+    Person {
+        int personId PK
+        string email
+        string username
+        string password
+        string name
+        int phoneNumber
+        string role
+    }
+
+    Order {
+        int orderId PK
+        int totalOrderPrice
+        date orderDate
+        int personId FK
+    }
+
+
+    ProductsInOrder {
+        int productId PK, FK
+        int orderId PK, FK
+        int productQuantity
+    }
